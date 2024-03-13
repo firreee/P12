@@ -1,4 +1,4 @@
-rainfall = {
+rainfall_for_chicago_2017 = {
     "Jan": 2.87,
     "Feb": 1.52,
     "Mar": 4.01,
@@ -13,7 +13,7 @@ rainfall = {
     "Dec": 0.59
 }
 
-rainfall_list = list(rainfall.values())
+rainfall_list = list(rainfall_for_chicago_2017.values())
 
 if any(val < 0 or not val for val in rainfall_list):
     print("Invalid data: Rainfall cannot be negative or blank.")
@@ -24,9 +24,9 @@ else:
     average = total / len(rainfall_list)
 
     print("Data list:")
-    print(rainfall)
+    for month, value in rainfall_for_chicago_2017.items():
+        print(f"{month}: {value:.2f}")
     print(f"\nHighest: {highest:.2f}")
     print(f"Lowest: {lowest:.2f}")
     print(f"Total: {total:.2f}")
     print(f"Average: {average:.2f}")
-
