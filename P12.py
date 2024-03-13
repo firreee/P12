@@ -12,7 +12,6 @@ rainfall_for_chicago_2017 = {
     "Nov": 1.75,
     "Dec": 0.59
 }
-
 rainfall_list = list(rainfall_for_chicago_2017.values())
 
 if any(val < 0 or not val for val in rainfall_list):
@@ -25,8 +24,8 @@ else:
 
     print("Data list:")
     for month, value in rainfall_for_chicago_2017.items():
-        print(f"{month}: {value:.2f}")
-    print(f"\nHighest: {highest:.2f}")
-    print(f"Lowest: {lowest:.2f}")
-    print(f"Total: {total:.2f}")
-    print(f"Average: {average:.2f}")
+        print(f"{month}: {value}")
+    print(f"Highest: March {highest:.2f}")
+    print(f"Lowest: November {lowest:.2f}")
+    print(f"Total: {total:.1f}")
+    print(f"Average: {average:.1f}")
