@@ -1,31 +1,36 @@
-rainfall_for_chicago_2017 = {
-    "Jan": 2.87,
-    "Feb": 1.52,
-    "Mar": 4.01,
-    "Apr": 6.43,
-    "May": 3.28,
-    "Jun": 3.44,
-    "Jul": 7.68,
-    "Aug": 2.51,
-    "Sep": 0.32,
-    "Oct": 8.70,
-    "Nov": 1.75,
-    "Dec": 0.59
-}
-rainfall_list = list(rainfall_for_chicago_2017.values())
+rainfall_data_file = open('rainfall.txt', 'r')
+rainfall_lines = rainfall_data_file.readlines()
+rainfall_data_file.close()
 
-if any(val < 0 or not val for val in rainfall_list):
-    print("Invalid data: Rainfall cannot be negative or blank.")
-else:
-    highest = max(rainfall_list)
-    lowest = min(rainfall_list)
-    total = sum(rainfall_list)
-    average = total / len(rainfall_list)
+rainfall_data = [float(line.split(':')[1].strip()) for line in rainfall_lines]
 
-    print("Data list:")
-    for month, value in rainfall_for_chicago_2017.items():
-        print(f"{month}: {value}")
-    print(f"Highest: March {highest:.2f}")
-    print(f"Lowest: November {lowest:.2f}")
-    print(f"Total: {total:.1f}")
-    print(f"Average: {average:.1f}")
+print("Data list:")
+months = [
+    'January', 
+    'February', 
+    'March', 
+    'April',
+    'May', 
+    'June', 
+    'July', 
+    'August',
+    'September', 
+    'October', 
+    'November', 
+    'December'
+]
+for month, rainfall in zip(months, rainfall_data):
+    print(f"{month}: {rainfall}")
+
+highest = max(rainfall_data)
+lowest = min(rainfall_data)
+total = sum(rainfall_data)
+average = total / len(rainfall_data)
+
+total_formatted = '{:.2f}'.format(total)
+average_formatted = '{:.2f}'.format(average)
+
+print(f"\nHighest: {months[rainfall_data.index(highest)]} {highest}")
+print(f"Lowest: {months[rainfall_data.index(lowest)]} {lowest}")
+print(f"Total: {total_formatted}")
+print(f"Average: {average_formatted}")
